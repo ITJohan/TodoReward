@@ -3,27 +3,28 @@
 <h3>Todo</h3>
 
 <ul>
-    @foreach (var Todo in Todos)
+    @foreach (var todo in todos)
     {
         <li>
-            @Todo.Title
+            <input type="checkbox" @bind="todo.IsDone" />
+            <input @bind="todo.Title" />
         </li>
     }
 </ul>
 
-<input @bind="NewTodo" />
+<input @bind="newTodo" />
 <button @onclick="AddTodo">Add todo</button>
 
 @code {
-    private IList<TodoItem> Todos = new List<TodoItem>();
-    private string NewTodo;
+    private IList<TodoItem> todos = new List<TodoItem>();
+    private string newTodo;
 
     private void AddTodo()
     {
-        if (!string.IsNullOrWhiteSpace(NewTodo))
+        if (!string.IsNullOrWhiteSpace(newTodo))
         {
-            Todos.Add(new TodoItem { Title = NewTodo });
-            NewTodo = string.Empty;
+            todos.Add(new TodoItem { Title = newTodo });
+            newTodo = string.Empty;
         }
     }
 }
