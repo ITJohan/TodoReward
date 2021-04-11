@@ -7,7 +7,9 @@ namespace TodoReward
 {
     public class TodoItem
     {
-        public string Title { get; set; }
-        public bool IsDone { get; set; }
+        public string Description { get; set; }
+        public int TimeLeft { get; set; }
+        public int RepeatInterval { get; set; }
+        public int Points { get; set; }
     }
 }
