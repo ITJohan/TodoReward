@@ -6,8 +6,7 @@
     @foreach (var todo in todos)
     {
         <li>
-            <input type="checkbox" @bind="todo.IsDone" />
-            <input @bind="todo.Title" />
+            <input @bind="todo.Description" />
         </li>
     }
 </ul>
@@ -23,7 +22,7 @@
     {
         if (!string.IsNullOrWhiteSpace(newTodo))
         {
-            todos.Add(new TodoItem { Title = newTodo });
+            todos.Add(new TodoItem { Description = newTodo });
             newTodo = string.Empty;
         }
     }
