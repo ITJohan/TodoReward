@@ -1,12 +1,12 @@
 ﻿@page "/todos"
 
-<h3>Todo</h3>
+<h3>Todos</h3>
 
 <ul>
     @foreach (var todo in todos)
     {
         <li>
-            <input @bind="todo.Description" />
+            <TodoCard TodoItem=@todo />
         </li>
     }
 </ul>
@@ -15,14 +15,14 @@
 <button @onclick="AddTodo">Add todo</button>
 
 @code {
-    private IList<TodoItem> todos = new List<TodoItem>();
+    private IList<Todo> todos = new List<Todo>();
     private string newTodo;
 
     private void AddTodo()
     {
         if (!string.IsNullOrWhiteSpace(newTodo))
         {
-            todos.Add(new TodoItem { Description = newTodo });
+            todos.Add(new Todo { Description = newTodo });
             newTodo = string.Empty;
         }
     }

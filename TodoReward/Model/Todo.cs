@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TodoReward
+namespace TodoReward.Model
 {
-    public class TodoItem
+    public class Todo
     {
         public string Description { get; set; }
         public int TimeLeft { get; set; }
