@@ -1,19 +1,39 @@
 ﻿<div class="card">
     <div class="header">
-        <h3>@Todo.Description</h3>
+        @if (Editing)
+        {
+            <input @bind="Todo.Description" />
+        }
+        else
+        {
+            <h3>@Todo.Description</h3>
+        }
         <div class="buttons">
-            <button>✏</button>
+            <button @onclick="() => Editing = !Editing">✏</button>
             <button>✔</button>
         </div>
     </div>
     <div class="info">
-        <div>Deadline: @Todo.TimeLeft days</div>
-        <div>Interval: @Todo.RepeatInterval</div>
-        <div>Points: @Todo.Points</div>
+        @if (Editing)
+        {
+            <div>Deadline: <input class="info-input" @bind="Todo.TimeLeft" /> days</div>
+            <div>Interval: <input class="info-input" @bind="Todo.RepeatInterval" /></div>
+            <div>Points: <input class="info-input" @bind="Todo.Points" /></div>
+        }
+        else
+        {
+            <div>Deadline: @Todo.TimeLeft days</div>
+            <div>Interval: @Todo.RepeatInterval</div>
+            <div>Points: @Todo.Points</div>
+        }
     </div>
 </div>
 
 @code {
     [Parameter]
     public Todo Todo { get; set; }
+
+    private bool Editing = false;
+
+
 }
