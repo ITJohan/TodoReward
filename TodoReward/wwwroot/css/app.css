@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+body {
+    background: url("../images/background.jpg") no-repeat center center/cover fixed;
+    color: white;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;
