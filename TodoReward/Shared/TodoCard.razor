@@ -1,6 +1,19 @@
-﻿<h3>@TodoItem.Description</h3>
+﻿<div class="card">
+    <div class="header">
+        <h3>@Todo.Description</h3>
+        <div>
+            <button>✏</button>
+            <button>✔</button>
+        </div>
+    </div>
+    <div class="info">
+        <div>Deadline: @Todo.TimeLeft days</div>
+        <div>Interval: @Todo.RepeatInterval</div>
+        <div>Points: @Todo.Points</div>
+    </div>
+</div>
 
 @code {
     [Parameter]
-    public Todo TodoItem { get; set; }
+    public Todo Todo { get; set; }
 }

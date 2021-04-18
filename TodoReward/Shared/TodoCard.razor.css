@@ -1,0 +1,13 @@
+﻿.card {
+    background-color: lightgrey;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}

@@ -2,14 +2,10 @@
 
 <h3>Todos</h3>
 
-<ul>
-    @foreach (var todo in todos)
-    {
-        <li>
-            <TodoCard TodoItem=@todo />
-        </li>
-    }
-</ul>
+@foreach (var todo in todos)
+{
+    <TodoCard Todo=@todo />
+}
 
 <input @bind="newTodo" />
 <button @onclick="AddTodo">Add todo</button>
