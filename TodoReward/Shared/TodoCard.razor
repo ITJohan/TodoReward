@@ -6,25 +6,25 @@
         }
         else
         {
-            <h3>@Todo.Description</h3>
+            <p>@Todo.Description</p>
         }
         <div class="buttons">
-            <button @onclick="() => Editing = !Editing">✏</button>
-            <button>✔</button>
+            <button @onclick="ToggleEdit">Edit</button>
+            <button>Done</button>
         </div>
     </div>
     <div class="info">
         @if (Editing)
         {
-            <div>Deadline: <input class="info-input" @bind="Todo.TimeLeft" /> days</div>
-            <div>Interval: <input class="info-input" @bind="Todo.RepeatInterval" /></div>
-            <div>Points: <input class="info-input" @bind="Todo.Points" /></div>
+            <div>📅 <input class="info-input" @bind="Todo.TimeLeft" /> days</div>
+            <div>🔁 <input class="info-input" @bind="Todo.RepeatInterval" /> days</div>
+            <div>⭐ <input class="info-input" @bind="Todo.Points" /> points</div>
         }
         else
         {
-            <div>Deadline: @Todo.TimeLeft days</div>
-            <div>Interval: @Todo.RepeatInterval</div>
-            <div>Points: @Todo.Points</div>
+            <div>📅 @Todo.TimeLeft days</div>
+            <div>🔁 @Todo.RepeatInterval days</div>
+            <div>⭐ @Todo.Points points</div>
         }
     </div>
 </div>
@@ -33,7 +33,8 @@
     [Parameter]
     public Todo Todo { get; set; }
 
-    private bool Editing = false;
+    [Parameter]
+    public bool Editing { get; set; }
 
-
-}
+        private void ToggleEdit() => Editing = !Editing;
+    }

@@ -9,6 +9,15 @@
     padding: 0;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightgrey;
+}
+
 body {
     background: url("../images/background.jpg") no-repeat center center/cover fixed;
     font-family: Roboto, sans-serif;

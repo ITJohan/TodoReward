@@ -1,17 +1,36 @@
-﻿.card {
-    background-color: rgba(255, 255, 255, 0.2);
+﻿button {
+    background: #2c3429;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 0.25rem;
+    border: none;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+button:hover {
+    background: #293823;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.7);
     margin-bottom: 1rem;
     word-break: break-word;
     margin: 1rem;
-    backdrop-filter: blur(2px);
     border-radius: 0.25rem;
     padding: 0.5rem;
+    width: 90%;
+    max-width: 32rem;
+    box-shadow: 1px 1px 6px rgb(0 0 0);
 }
 
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .buttons {

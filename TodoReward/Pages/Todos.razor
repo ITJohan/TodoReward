@@ -2,7 +2,7 @@
 
 @foreach (var todo in todos)
 {
-    <TodoCard Todo=@todo />
+    <TodoCard Todo=@todo Editing="false" />
 }
 
 <input @bind="newTodo" />
