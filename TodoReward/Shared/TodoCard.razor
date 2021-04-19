@@ -3,15 +3,19 @@
         @if (Editing)
         {
             <input @bind="Todo.Description" />
+            <div class="buttons">
+                <button class="success-button" @onclick="ToggleEdit">Save</button>
+                <button class="danger-button">Delete</button>
+            </div>
         }
         else
         {
             <p>@Todo.Description</p>
+            <div class="buttons">
+                <button class="primary-button" @onclick="ToggleEdit">Edit</button>
+                <button class="success-button">Done</button>
+            </div>
         }
-        <div class="buttons">
-            <button @onclick="ToggleEdit">Edit</button>
-            <button>Done</button>
-        </div>
     </div>
     <div class="info">
         @if (Editing)

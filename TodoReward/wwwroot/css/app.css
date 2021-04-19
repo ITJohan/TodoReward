@@ -24,6 +24,41 @@ body {
     color: white;
 }
 
+button {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 0.25rem;
+    border: none;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    width: max-content;
+}
+
+.primary-button {
+    background: #196fb3;
+}
+
+.primary-button:hover {
+    background: #2187d8;
+}
+
+.success-button {
+    background: #328e3d;
+}
+
+.success-button:hover {
+    background: #39a947;
+}
+
+.danger-button {
+    background: #a02e2e;
+}
+
+.danger-button:hover {
+    background: #d43c3c;
+}
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;

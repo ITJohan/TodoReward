@@ -6,7 +6,8 @@
 }
 
 <input @bind="newTodo" />
-<button @onclick="AddTodo">Add todo</button>
+<br />
+<button class="primary-button" @onclick="AddTodo">Add todo</button>
 
 @code {
     private IList<Todo> todos = new List<Todo>();
