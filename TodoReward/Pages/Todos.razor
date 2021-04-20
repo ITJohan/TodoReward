@@ -2,18 +2,19 @@
 
 @foreach (var todo in todos)
 {
-    <TodoCard Todo=@todo Editing="false" />
+    Console.WriteLine(todo.Description);
+    <TodoCard Todo="@todo" DeleteTodoParent="() => DeleteTodo(todo.Id)" />
 }
 
-<input @bind="newTodo" />
 <br />
 <button class="primary-button" @onclick="AddTodo">Add todo</button>
 
 @code {
-    private IList<Todo> todos = new List<Todo>
-    {
+    private List<Todo> todos = new List<Todo>
+{
         new Todo
         {
+            Id = 1,
             Description = "Ring Siv",
             Points = 10,
             TimeLeft = 16,
@@ -21,6 +22,7 @@
         },
         new Todo
         {
+            Id = 2,
             Description = "Ring Solveig",
             Points = 100,
             TimeLeft = 4,
@@ -28,6 +30,7 @@
         },
         new Todo
         {
+            Id = 3,
             Description = "Træna",
             Points = 10,
             TimeLeft = 1,
@@ -35,6 +38,7 @@
         },
         new Todo
         {
+            Id = 4,
             Description = "Yoga",
             Points = 10,
             TimeLeft = 1,
@@ -42,14 +46,15 @@
         }
     };
 
-    private string newTodo;
-
     private void AddTodo()
     {
-        if (!string.IsNullOrWhiteSpace(newTodo))
-        {
-            todos.Add(new Todo { Description = newTodo });
-            newTodo = string.Empty;
-        }
+        var newTodo = new Todo();
+        todos.Add(newTodo);
+    }
+
+    private void DeleteTodo(int Id)
+    {
+        todos.RemoveAll(t => t.Id == Id);
+        this.StateHasChanged();
     }
 }

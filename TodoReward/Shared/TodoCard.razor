@@ -5,7 +5,7 @@
             <input @bind="Todo.Description" />
             <div class="buttons">
                 <button class="success-button" @onclick="ToggleEdit">Save</button>
-                <button class="danger-button">Delete</button>
+                <button class="danger-button" @onclick="DeleteTodoParent">Delete</button>
             </div>
         }
         else
@@ -36,9 +36,9 @@
 @code {
     [Parameter]
     public Todo Todo { get; set; }
-
     [Parameter]
-    public bool Editing { get; set; }
+    public Action DeleteTodoParent { get; set; }
+    private bool Editing { get; set; }
 
-        private void ToggleEdit() => Editing = !Editing;
-    }
+    private void ToggleEdit() => Editing = !Editing;
+}
