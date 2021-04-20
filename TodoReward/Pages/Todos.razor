@@ -10,7 +10,38 @@
 <button class="primary-button" @onclick="AddTodo">Add todo</button>
 
 @code {
-    private IList<Todo> todos = new List<Todo>();
+    private IList<Todo> todos = new List<Todo>
+    {
+        new Todo
+        {
+            Description = "Ring Siv",
+            Points = 10,
+            TimeLeft = 16,
+            RepeatInterval = 30
+        },
+        new Todo
+        {
+            Description = "Ring Solveig",
+            Points = 100,
+            TimeLeft = 4,
+            RepeatInterval = 30
+        },
+        new Todo
+        {
+            Description = "Træna",
+            Points = 10,
+            TimeLeft = 1,
+            RepeatInterval = 1
+        },
+        new Todo
+        {
+            Description = "Yoga",
+            Points = 10,
+            TimeLeft = 1,
+            RepeatInterval = 1
+        }
+    };
+
     private string newTodo;
 
     private void AddTodo()
