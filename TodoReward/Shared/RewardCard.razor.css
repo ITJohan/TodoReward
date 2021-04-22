@@ -1,0 +1,36 @@
+﻿.buttons {
+    display: flex;
+}
+
+.card {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 1rem;
+    word-break: break-word;
+    margin: 1rem;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: 90%;
+    max-width: 32rem;
+    box-shadow: 1px 1px 6px rgb(0 0 0);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.buttons {
+    display: flex;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-input {
+    width: 1rem;
+}

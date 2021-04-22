@@ -2,7 +2,6 @@
 
 @foreach (var todo in todos)
 {
-    Console.WriteLine(todo.Description);
     <TodoCard Todo="@todo" DeleteTodoParent="() => DeleteTodo(todo.Id)" />
 }
 

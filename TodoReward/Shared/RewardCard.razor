@@ -2,15 +2,15 @@
     <div class="header">
         @if (Editing)
         {
-            <input @bind="Todo.Description" />
+            <input @bind="Reward.Description" />
             <div class="buttons">
                 <button class="success-button" @onclick="ToggleEdit">Save</button>
-                <button class="danger-button" @onclick="DeleteTodoParent">Delete</button>
+                <button class="danger-button" @onclick="DeleteRewardParent">Delete</button>
             </div>
         }
         else
         {
-            <p>@Todo.Description</p>
+            <p>@Reward.Description</p>
             <div class="buttons">
                 <button class="primary-button" @onclick="ToggleEdit">Edit</button>
                 <button class="success-button">Done</button>
@@ -20,31 +20,27 @@
     <div class="info">
         @if (Editing)
         {
-            <div>📅 <input class="info-input" @bind="Todo.TimeLeft" /> days</div>
-            <div>🔁 <input class="info-input" @bind="Todo.RepeatInterval" /> days</div>
-            <div>⭐ <input class="info-input" @bind="Todo.Points" /> points</div>
+            <div>⭐ <input class="info-input" @bind="Reward.Points" /> points</div>
         }
         else
         {
-            <div>📅 @Todo.TimeLeft days</div>
-            <div>🔁 @Todo.RepeatInterval days</div>
-            <div>⭐ @Todo.Points points</div>
+            <div>⭐ @Reward.Points points</div>
         }
     </div>
 </div>
 
 @code {
     [Parameter]
-    public Todo Todo { get; set; }
+    public Reward Reward { get; set; }
     [Parameter]
-    public Action DeleteTodoParent { get; set; }
+    public Action DeleteRewardParent { get; set; }
     private bool Editing { get; set; }
 
     private void ToggleEdit() => Editing = !Editing;
 
     protected override void OnInitialized()
     {
-        if (Todo.Description == null)
+        if (Reward.Description == null)
         {
             Editing = true;
         }
