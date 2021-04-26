@@ -15,8 +15,10 @@ nav {
     bottom: 0;
 }
 
-h1 {
-    text-align: center;
+nav > div {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 header, nav {
