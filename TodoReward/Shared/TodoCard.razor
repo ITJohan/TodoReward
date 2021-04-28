@@ -13,7 +13,7 @@
             <p>@Todo.Description</p>
             <div class="buttons">
                 <button class="primary-button" @onclick="ToggleEdit">Edit</button>
-                <button class="success-button">Done</button>
+                <button class="success-button" @onclick="HandleDone">Done</button>
             </div>
         }
     </div>
@@ -47,6 +47,18 @@
         if (Todo.Description == null)
         {
             Editing = true;
+        }
+    }
+
+    private void HandleDone()
+    {
+        if (Todo.RepeatInterval > 0)
+        {
+            Todo.TimeLeft = Todo.RepeatInterval;
+        }
+        else
+        {
+            DeleteTodoParent();
         }
     }
 }
