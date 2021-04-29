@@ -2,7 +2,9 @@
 
 @foreach (var todo in todos)
 {
-    <TodoCard Todo="@todo" DeleteTodoParent="() => DeleteTodo(todo.Id)" />
+    <TodoCard Todo="@todo"
+              DeleteTodo="() => DeleteTodo(todo.Id)"
+              OrderTodos="() => OrderTodos()" />
 }
 
 <br />
@@ -45,15 +47,28 @@
         }
     };
 
+    protected override Task OnInitializedAsync()
+    {
+        OrderTodos();
+        return base.OnInitializedAsync();
+    }
+
     private void AddTodo()
     {
         var newTodo = new Todo();
         todos.Add(newTodo);
+        OrderTodos();
     }
 
     private void DeleteTodo(int Id)
     {
         todos.RemoveAll(t => t.Id == Id);
+        OrderTodos();
+    }
+
+    private void OrderTodos()
+    {
+        todos = todos.OrderBy(t => t.TimeLeft).ToList();
         this.StateHasChanged();
     }
 }

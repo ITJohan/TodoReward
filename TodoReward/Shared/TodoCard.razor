@@ -5,7 +5,7 @@
             <input @bind="Todo.Description" />
             <div class="buttons">
                 <button class="success-button" @onclick="ToggleEdit">Save</button>
-                <button class="danger-button" @onclick="DeleteTodoParent">Delete</button>
+                <button class="danger-button" @onclick="DeleteTodo">Delete</button>
             </div>
         }
         else
@@ -37,10 +37,17 @@
     [Parameter]
     public Todo Todo { get; set; }
     [Parameter]
-    public Action DeleteTodoParent { get; set; }
+    public Action DeleteTodo { get; set; }
+    [Parameter]
+    public Action OrderTodos { get; set; }
+
     private bool Editing { get; set; }
 
-    private void ToggleEdit() => Editing = !Editing;
+    private void ToggleEdit()
+    {
+        Editing = !Editing;
+        OrderTodos();
+    }
 
     protected override void OnInitialized()
     {
@@ -55,10 +62,11 @@
         if (Todo.RepeatInterval > 0)
         {
             Todo.TimeLeft = Todo.RepeatInterval;
+            OrderTodos();
         }
         else
         {
-            DeleteTodoParent();
+            DeleteTodo();
         }
     }
 }
