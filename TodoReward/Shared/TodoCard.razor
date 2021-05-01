@@ -49,12 +49,14 @@
         OrderTodos();
     }
 
-    protected override void OnInitialized()
+    protected override Task OnInitializedAsync()
     {
         if (Todo.Description == null)
         {
             Editing = true;
         }
+
+        return base.OnInitializedAsync();
     }
 
     private void HandleDone()
