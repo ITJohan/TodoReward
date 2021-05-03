@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using TodoReward.Repository;
 
 namespace TodoReward
 {
@@ -18,6 +19,7 @@ namespace TodoReward
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddScoped<IRewardRepository, RewardRepository>();
 
             await builder.Build().RunAsync();
         }
