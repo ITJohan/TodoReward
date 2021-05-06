@@ -8,9 +8,18 @@ namespace TodoReward.Repository
 {
     public class TodoRepository : ITodoRepository
     {
+        private IList<Todo> _todos;
+
+        public TodoRepository()
+        {
+            _todos = new List<Todo>();
+        }
+
         public bool AddTodo(Todo todo)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("AddTodo");
+            _todos.Add(todo);
+            return true;
         }
 
         public bool DeleteTodo(int id)

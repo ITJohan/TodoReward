@@ -1,5 +1,5 @@
 ﻿@page "/todos"
-@inject IRewardRepository RewardRepository
+@inject ITodoRepository TodoRepository
 
 @foreach (var todo in todos)
 {
@@ -57,6 +57,7 @@
     private void AddTodo()
     {
         var newTodo = new Todo();
+        TodoRepository.AddTodo(newTodo);
         todos.Add(newTodo);
     }
 
