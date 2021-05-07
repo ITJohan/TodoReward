@@ -17,29 +17,38 @@ namespace TodoReward.Repository
 
         public bool AddTodo(Todo todo)
         {
-            Console.WriteLine("AddTodo");
             _todos.Add(todo);
             return true;
         }
 
         public bool DeleteTodo(int id)
         {
-            throw new NotImplementedException();
+            Todo todo = _todos.FirstOrDefault(t => t.Id == id);
+
+            if (todo != null)
+            {
+                _todos.Remove(todo);
+                return true;
+            }
+
+            return false;
         }
 
         public Todo GetTodo(int id)
         {
-            throw new NotImplementedException();
+            return _todos.FirstOrDefault(t => t.Id == id);
         }
 
         public List<Todo> GetTodos()
         {
-            throw new NotImplementedException();
+            return _todos.ToList();
         }
 
         public bool UpdateTodo(Todo todo)
         {
-            throw new NotImplementedException();
+            DeleteTodo(todo.Id);
+            AddTodo(todo);
+            return true;
         }
     }
 }
