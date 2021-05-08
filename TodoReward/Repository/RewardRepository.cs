@@ -1,33 +1,52 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TodoReward.Model;
 
 namespace TodoReward.Repository
 {
     public class RewardRepository : IRewardRepository
     {
+        private IList<Reward> _rewards;
+
+        public RewardRepository()
+        {
+            _rewards = new List<Reward>();
+        }
+
         public bool AddReward(Reward reward)
         {
-            throw new System.NotImplementedException();
+            _rewards.Add(reward);
+            return true;
         }
 
         public bool DeleteReward(int id)
         {
-            throw new System.NotImplementedException();
+            Reward reward = _rewards.FirstOrDefault(r => r.Id == id);
+
+            if (reward != null)
+            {
+                _rewards.Remove(reward);
+                return true;
+            }
+
+            return false;
         }
 
         public Reward GetReward(int id)
         {
-            throw new System.NotImplementedException();
+            return _rewards.FirstOrDefault(r => r.Id == id);
         }
 
         public List<Reward> GetRewards()
         {
-            throw new System.NotImplementedException();
+            return _rewards.ToList();
         }
 
         public bool UpdateReward(Reward reward)
         {
-            throw new System.NotImplementedException();
+            DeleteReward(reward.Id);
+            AddReward(reward);
+            return true;
         }
     }
 }
