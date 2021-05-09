@@ -12,7 +12,41 @@ namespace TodoReward.Repository
 
         public TodoRepository()
         {
-            _todos = new List<Todo>();
+            _todos = new List<Todo>
+            {
+                new Todo
+                {
+                    Id = 1,
+                    Description = "Ring Siv",
+                    Points = 10,
+                    TimeLeft = 16,
+                    RepeatInterval = 30
+                },
+                new Todo
+                {
+                    Id = 2,
+                    Description = "Ring Solveig",
+                    Points = 100,
+                    TimeLeft = 4,
+                    RepeatInterval = 30
+                },
+                new Todo
+                {
+                    Id = 3,
+                    Description = "Træna",
+                    Points = 10,
+                    TimeLeft = 1,
+                    RepeatInterval = 1
+                },
+                new Todo
+                {
+                    Id = 4,
+                    Description = "Yoga",
+                    Points = 10,
+                    TimeLeft = 1,
+                    RepeatInterval = 1
+                }
+            };
         }
 
         public bool AddTodo(Todo todo)

@@ -12,44 +12,11 @@
 <button class="primary-button" @onclick="AddTodo">Add todo</button>
 
 @code {
-    private List<Todo> todos = new List<Todo>
-{
-        new Todo
-        {
-            Id = 1,
-            Description = "Ring Siv",
-            Points = 10,
-            TimeLeft = 16,
-            RepeatInterval = 30
-        },
-        new Todo
-        {
-            Id = 2,
-            Description = "Ring Solveig",
-            Points = 100,
-            TimeLeft = 4,
-            RepeatInterval = 30
-        },
-        new Todo
-        {
-            Id = 3,
-            Description = "Træna",
-            Points = 10,
-            TimeLeft = 1,
-            RepeatInterval = 1
-        },
-        new Todo
-        {
-            Id = 4,
-            Description = "Yoga",
-            Points = 10,
-            TimeLeft = 1,
-            RepeatInterval = 1
-        }
-    };
+    private List<Todo> todos;
 
     protected override Task OnInitializedAsync()
     {
+        todos = TodoRepository.GetTodos();
         OrderTodos();
         return base.OnInitializedAsync();
     }
@@ -64,6 +31,7 @@
     private void DeleteTodo(int Id)
     {
         todos.RemoveAll(t => t.Id == Id);
+        TodoRepository.DeleteTodo(Id);
         OrderTodos();
     }
 
