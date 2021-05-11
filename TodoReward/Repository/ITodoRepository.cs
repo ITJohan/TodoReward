@@ -8,10 +8,10 @@ namespace TodoReward.Repository
 {
     interface ITodoRepository
     {
-        bool AddTodo(Todo todo);
-        List<Todo> GetTodos();
+        void AddTodo(Todo todo);
+        void DeleteTodo(int id);
         Todo GetTodo(int id);
-        bool UpdateTodo(Todo todo);
-        bool DeleteTodo(int id);
+        List<Todo> GetTodos();
+        void UpdateTodo(Todo todo);
     }
 }

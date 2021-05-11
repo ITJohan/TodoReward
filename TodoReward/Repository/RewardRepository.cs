@@ -39,23 +39,19 @@ namespace TodoReward.Repository
             };
         }
 
-        public bool AddReward(Reward reward)
+        public void AddReward(Reward reward)
         {
             _rewards.Add(reward);
-            return true;
         }
 
-        public bool DeleteReward(int id)
+        public void DeleteReward(int id)
         {
             Reward reward = _rewards.FirstOrDefault(r => r.Id == id);
 
             if (reward != null)
             {
                 _rewards.Remove(reward);
-                return true;
             }
-
-            return false;
         }
 
         public Reward GetReward(int id)
@@ -68,11 +64,10 @@ namespace TodoReward.Repository
             return _rewards.ToList();
         }
 
-        public bool UpdateReward(Reward reward)
+        public void UpdateReward(Reward reward)
         {
             DeleteReward(reward.Id);
             AddReward(reward);
-            return true;
         }
     }
 }

@@ -49,23 +49,20 @@ namespace TodoReward.Repository
             };
         }
 
-        public bool AddTodo(Todo todo)
+        public void AddTodo(Todo todo)
         {
             _todos.Add(todo);
-            return true;
         }
 
-        public bool DeleteTodo(int id)
+        public void DeleteTodo(int id)
         {
             Todo todo = _todos.FirstOrDefault(t => t.Id == id);
 
             if (todo != null)
             {
                 _todos.Remove(todo);
-                return true;
             }
 
-            return false;
         }
 
         public Todo GetTodo(int id)
@@ -78,11 +75,10 @@ namespace TodoReward.Repository
             return _todos.ToList();
         }
 
-        public bool UpdateTodo(Todo todo)
+        public void UpdateTodo(Todo todo)
         {
             DeleteTodo(todo.Id);
             AddTodo(todo);
-            return true;
         }
     }
 }

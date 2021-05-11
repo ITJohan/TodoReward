@@ -8,10 +8,10 @@ namespace TodoReward.Repository
 {
     public interface IRewardRepository
     {
-        bool AddReward(Reward reward);
+        void AddReward(Reward reward);
         List<Reward> GetRewards();
         Reward GetReward(int id);
-        bool UpdateReward(Reward reward);
-        bool DeleteReward(int id);
+        void UpdateReward(Reward reward);
+        void DeleteReward(int id);
     }
 }
