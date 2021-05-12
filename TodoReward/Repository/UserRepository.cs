@@ -8,29 +8,43 @@ namespace TodoReward.Repository
 {
     public class UserRepository : IUserRepository
     {
+        private IList<User> _users;
+
+        public UserRepository()
+        {
+            _users = new List<User>();
+        }
+
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            _users.Add(user);
         }
 
         public User GetUser(Guid id)
         {
-            throw new NotImplementedException();
+            User user = _users.FirstOrDefault(u => u.Id == id);
+            return user;
         }
 
         public List<User> GetUsers()
         {
-            throw new NotImplementedException();
+            return _users.ToList();
         }
 
         public void RemoveUser(Guid id)
         {
-            throw new NotImplementedException();
+            User user = GetUser(id);
+
+            if (user != null)
+            {
+                _users.Remove(user);
+            }
         }
 
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            RemoveUser(user.Id);
+            AddUser(user);
         }
     }
 }
