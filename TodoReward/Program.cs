@@ -21,6 +21,7 @@ namespace TodoReward
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddScoped<ITodoRepository, TodoRepository>();
             builder.Services.AddScoped<IRewardRepository, RewardRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
 
             await builder.Build().RunAsync();
         }

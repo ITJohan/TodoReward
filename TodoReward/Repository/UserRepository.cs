@@ -12,7 +12,17 @@ namespace TodoReward.Repository
 
         public UserRepository()
         {
-            _users = new List<User>();
+            _users = new List<User>
+            {
+                new User
+                {
+                    Id = new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"),
+                    FirstName = "Johan",
+                    LastName = "Lindkvist",
+                    Email = "johanlindkvist89@gmail.com",
+                    Points = 4878
+                }
+            };
         }
 
         public void AddUser(User user)

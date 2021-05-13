@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject IUserRepository UserRepository
 
 <header>Todo/Reward ✔</header>
 
@@ -8,10 +9,18 @@
 
 <nav>
     <NavLink href="/todos">Todos</NavLink>
-    <div>⭐ @TotalPoints</div>
+    <div>⭐ @_totalPoints</div>
     <NavLink href="/rewards">Rewards</NavLink>
 </nav>
 
 @code {
-    private int TotalPoints = 1232;
+    private User _user;
+    private int _totalPoints;
+
+    protected override Task OnInitializedAsync()
+    {
+        _user = UserRepository.GetUser(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
+        _totalPoints = _user.Points;
+        return base.OnInitializedAsync();
+    }
 }
