@@ -8,77 +8,90 @@ namespace TodoReward.Repository
 {
     public class TodoRepository : ITodoRepository
     {
-        private IList<Todo> _todos;
+        private readonly IUserRepository _userRepository;
 
-        public TodoRepository()
+        public TodoRepository(IUserRepository userRepository)
         {
-            _todos = new List<Todo>
+            _userRepository = userRepository;
+        }
+
+        public void AddTodo(Todo todo, Guid userId)
+        {
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
             {
-                new Todo
-                {
-                    Id = 1,
-                    Description = "Ring Siv",
-                    Points = 10,
-                    TimeLeft = 16,
-                    RepeatInterval = 30
-                },
-                new Todo
-                {
-                    Id = 2,
-                    Description = "Ring Solveig",
-                    Points = 100,
-                    TimeLeft = 4,
-                    RepeatInterval = 30
-                },
-                new Todo
-                {
-                    Id = 3,
-                    Description = "Træna",
-                    Points = 10,
-                    TimeLeft = 1,
-                    RepeatInterval = 1
-                },
-                new Todo
-                {
-                    Id = 4,
-                    Description = "Yoga",
-                    Points = 10,
-                    TimeLeft = 1,
-                    RepeatInterval = 1
-                }
-            };
+                return;
+            }
+
+            user.Todos.Add(todo);
+
+            // TODO: Save changes
         }
 
-        public void AddTodo(Todo todo)
+        public void DeleteTodo(Guid todoId, Guid userId)
         {
-            _todos.Add(todo);
-        }
+            User user = _userRepository.GetUser(userId);
 
-        public void DeleteTodo(int id)
-        {
-            Todo todo = _todos.FirstOrDefault(t => t.Id == id);
+            if (user == null)
+            {
+                return;
+            }
+
+            Todo todo = user.Todos.FirstOrDefault(t => t.Id == todoId);
 
             if (todo != null)
             {
-                _todos.Remove(todo);
+                user.Todos.Remove(todo);
             }
 
+            // TODO: Save changes
         }
 
-        public Todo GetTodo(int id)
+        public Todo GetTodo(Guid todoId, Guid userId)
         {
-            return _todos.FirstOrDefault(t => t.Id == id);
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.Todos.FirstOrDefault(t => t.Id == todoId);
         }
 
-        public List<Todo> GetTodos()
+        public List<Todo> GetTodos(Guid userId)
         {
-            return _todos.ToList();
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.Todos.ToList();
         }
 
-        public void UpdateTodo(Todo todo)
+        public void UpdateTodo(Todo todo, Guid userId)
         {
-            DeleteTodo(todo.Id);
-            AddTodo(todo);
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            Todo todoToUpdate = user.Todos.FirstOrDefault(t => t.Id == todo.Id);
+
+            if (todoToUpdate != null)
+            {
+                todoToUpdate.Description = todo.Description;
+                todoToUpdate.TimeLeft = todo.TimeLeft;
+                todoToUpdate.RepeatInterval = todo.RepeatInterval;
+                todoToUpdate.Points = todo.Points;
+            }
+
+            // TODO: Save changes
         }
     }
 }

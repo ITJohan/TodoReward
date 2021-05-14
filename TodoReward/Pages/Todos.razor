@@ -12,11 +12,13 @@
 <button class="primary-button" @onclick="AddTodo">Add todo</button>
 
 @code {
+    [Parameter]
+    public Guid userId { get; set; }
     private List<Todo> todos;
 
     protected override Task OnInitializedAsync()
     {
-        todos = TodoRepository.GetTodos();
+        todos = TodoRepository.GetTodos(userId);
         OrderTodos();
         return base.OnInitializedAsync();
     }
@@ -24,14 +26,14 @@
     private void AddTodo()
     {
         var newTodo = new Todo();
-        TodoRepository.AddTodo(newTodo);
+        TodoRepository.AddTodo(newTodo, userId);
         todos.Add(newTodo);
     }
 
-    private void DeleteTodo(int Id)
+    private void DeleteTodo(Guid todoId)
     {
-        todos.RemoveAll(t => t.Id == Id);
-        TodoRepository.DeleteTodo(Id);
+        todos.RemoveAll(t => t.Id == todoId);
+        TodoRepository.DeleteTodo(todoId, userId);
         OrderTodos();
     }
 
