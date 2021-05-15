@@ -18,7 +18,8 @@
 
     protected override Task OnInitializedAsync()
     {
-        todos = TodoRepository.GetTodos(userId);
+        // TODO: Change this to userId
+        todos = TodoRepository.GetTodos(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
         OrderTodos();
         return base.OnInitializedAsync();
     }

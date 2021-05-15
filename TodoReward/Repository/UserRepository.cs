@@ -20,7 +20,42 @@ namespace TodoReward.Repository
                     FirstName = "Johan",
                     LastName = "Lindkvist",
                     Email = "johanlindkvist89@gmail.com",
-                    Points = 4878
+                    Points = 4878,
+                    Todos = new List<Todo>
+                    {
+                        new Todo
+                        {
+                            Id = new Guid(),
+                            Description = "Ring Siv",
+                            Points = 10,
+                            TimeLeft = 16,
+                            RepeatInterval = 30
+                        },
+                        new Todo
+                        {
+                            Id = new Guid(),
+                            Description = "Ring Solveig",
+                            Points = 100,
+                            TimeLeft = 4,
+                            RepeatInterval = 30
+                        },
+                        new Todo
+                        {
+                            Id = new Guid(),
+                            Description = "Træna",
+                            Points = 10,
+                            TimeLeft = 1,
+                            RepeatInterval = 1
+                        },
+                        new Todo
+                        {
+                            Id = new Guid(),
+                            Description = "Yoga",
+                            Points = 10,
+                            TimeLeft = 1,
+                            RepeatInterval = 1
+                        }
+                    }
                 }
             };
         }
