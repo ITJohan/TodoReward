@@ -13,5 +13,6 @@ namespace TodoReward.Model
         public string Email { get; set; }
         public int Points { get; set; }
         public IList<Todo> Todos { get; set; }
+        public IList<Reward> Rewards { get; set; }
     }
 }

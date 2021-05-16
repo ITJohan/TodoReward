@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TodoReward.Model;
 
@@ -6,68 +7,87 @@ namespace TodoReward.Repository
 {
     public class RewardRepository : IRewardRepository
     {
-        private IList<Reward> _rewards;
+        private readonly IUserRepository _userRepository;
 
-        public RewardRepository()
+        public RewardRepository(IUserRepository userRepository)
         {
-            _rewards = new List<Reward>
-            {
-                new Reward
-                {
-                    Id = 1,
-                    Description = "1h gaming",
-                    Points = -10
-                },
-                new Reward
-                {
-                    Id = 2,
-                    Description = "Æt nått gott",
-                    Points = -100
-                },
-                new Reward
-                {
-                    Id = 3,
-                    Description = "Fylla",
-                    Points = -10
-                },
-                new Reward
-                {
-                    Id = 4,
-                    Description = "Drønare",
-                    Points = -1000
-                }
-            };
+            _userRepository = userRepository;
         }
 
-        public void AddReward(Reward reward)
+        public void AddReward(Reward reward, Guid userId)
         {
-            _rewards.Add(reward);
-        }
+            User user = _userRepository.GetUser(userId);
 
-        public void DeleteReward(int id)
-        {
-            Reward reward = _rewards.FirstOrDefault(r => r.Id == id);
-
-            if (reward != null)
+            if (user != null)
             {
-                _rewards.Remove(reward);
+                user.Rewards.Add(reward);
+
+                // TODO: Save changes
             }
         }
 
-        public Reward GetReward(int id)
+        public void DeleteReward(Guid rewardId, Guid userId)
         {
-            return _rewards.FirstOrDefault(r => r.Id == id);
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            Reward reward = user.Rewards.FirstOrDefault(r => r.Id == rewardId);
+
+            if (reward != null)
+            {
+                user.Rewards.Remove(reward);
+
+                // TODO: Save changes
+            }
         }
 
-        public List<Reward> GetRewards()
+        public Reward GetReward(Guid rewardId, Guid userId)
         {
-            return _rewards.ToList();
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.Rewards.FirstOrDefault(r => r.Id == rewardId);
         }
 
-        public void UpdateReward(Reward reward)
+        public List<Reward> GetRewards(Guid userId)
         {
-            DeleteReward(reward.Id);
-            AddReward(reward);
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.Rewards.ToList();
+        }
+
+        public void UpdateReward(Reward reward, Guid userId)
+        {
+            User user = _userRepository.GetUser(userId);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            Reward rewardToUpdate = user.Rewards.FirstOrDefault(r => r.Id == reward.Id);
+
+            if (rewardToUpdate != null)
+            {
+                rewardToUpdate.Description = reward.Description;
+                rewardToUpdate.Count = reward.Count;
+                rewardToUpdate.Points = reward.Points;
+
+                // TODO: Save changes;
+            }
         }
     }
 }

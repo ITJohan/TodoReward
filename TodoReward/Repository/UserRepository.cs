@@ -55,6 +55,33 @@ namespace TodoReward.Repository
                             TimeLeft = 1,
                             RepeatInterval = 1
                         }
+                    },
+                    Rewards = new List<Reward>
+                    {
+                        new Reward
+                        {
+                            Id = new Guid(),
+                            Description = "1h gaming",
+                            Points = -10
+                        },
+                        new Reward
+                        {
+                            Id = new Guid(),
+                            Description = "Æt nått gott",
+                            Points = -100
+                        },
+                        new Reward
+                        {
+                            Id = new Guid(),
+                            Description = "Fylla",
+                            Points = -10
+                        },
+                        new Reward
+                        {
+                            Id = new Guid(),
+                            Description = "Drønare",
+                            Points = -1000
+                        }
                     }
                 }
             };

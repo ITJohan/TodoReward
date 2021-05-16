@@ -1,7 +1,7 @@
 ﻿@page "/rewards"
 @inject IRewardRepository RewardRepository
 
-@foreach (var reward in rewards)
+@foreach (var reward in _rewards)
 {
     <RewardCard Reward="@reward" DeleteRewardParent="() => DeleteReward(reward.Id)" />
 }
@@ -10,25 +10,27 @@
 <button class="primary-button" @onclick="AddReward">Add reward</button>
 
 @code {
-    private List<Reward> rewards;
+    [Parameter]
+    public Guid UserId { get; set; }
+    private List<Reward> _rewards;
 
     protected override Task OnInitializedAsync()
     {
-        rewards = RewardRepository.GetRewards();
+        _rewards = RewardRepository.GetRewards(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
         return base.OnInitializedAsync();
     }
 
     private void AddReward()
     {
         var newReward = new Reward();
-        RewardRepository.AddReward(newReward);
-        rewards.Add(newReward);
+        RewardRepository.AddReward(newReward, UserId);
+        _rewards.Add(newReward);
     }
 
-    private void DeleteReward(int Id)
+    private void DeleteReward(Guid rewardId)
     {
-        rewards.RemoveAll(r => r.Id == Id);
-        RewardRepository.DeleteReward(Id);
+        _rewards.RemoveAll(r => r.Id == rewardId);
+        RewardRepository.DeleteReward(rewardId, UserId);
         this.StateHasChanged();
     }
 }

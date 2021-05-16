@@ -1,7 +1,7 @@
 ﻿@page "/todos"
 @inject ITodoRepository TodoRepository
 
-@foreach (var todo in todos)
+@foreach (var todo in _todos)
 {
     <TodoCard Todo="@todo"
               DeleteTodo="() => DeleteTodo(todo.Id)"
@@ -13,13 +13,13 @@
 
 @code {
     [Parameter]
-    public Guid userId { get; set; }
-    private List<Todo> todos;
+    public Guid UserId { get; set; }
+    private List<Todo> _todos;
 
     protected override Task OnInitializedAsync()
     {
-        // TODO: Change this to userId
-        todos = TodoRepository.GetTodos(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
+        // TODO: Change this to UserId
+        _todos = TodoRepository.GetTodos(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
         OrderTodos();
         return base.OnInitializedAsync();
     }
@@ -27,20 +27,20 @@
     private void AddTodo()
     {
         var newTodo = new Todo();
-        TodoRepository.AddTodo(newTodo, userId);
-        todos.Add(newTodo);
+        TodoRepository.AddTodo(newTodo, UserId);
+        _todos.Add(newTodo);
     }
 
     private void DeleteTodo(Guid todoId)
     {
-        todos.RemoveAll(t => t.Id == todoId);
-        TodoRepository.DeleteTodo(todoId, userId);
+        _todos.RemoveAll(t => t.Id == todoId);
+        TodoRepository.DeleteTodo(todoId, UserId);
         OrderTodos();
     }
 
     private void OrderTodos()
     {
-        todos = todos.OrderBy(t => t.TimeLeft).ToList();
+        _todos = _todos.OrderBy(t => t.TimeLeft).ToList();
         this.StateHasChanged();
     }
 }
