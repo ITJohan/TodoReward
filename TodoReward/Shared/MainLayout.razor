@@ -24,4 +24,9 @@
         UserStateContainer.OnChange += StateHasChanged;
         return base.OnInitializedAsync();
     }
+
+    public void Dispose()
+    {
+        UserStateContainer.OnChange -= StateHasChanged;
+    }
 }
