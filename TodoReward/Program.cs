@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using TodoReward.Repository;
+using TodoReward.Data;
+using TodoReward.Data.Repository;
 
 namespace TodoReward
 {
@@ -22,6 +19,7 @@ namespace TodoReward
             builder.Services.AddScoped<ITodoRepository, TodoRepository>();
             builder.Services.AddScoped<IRewardRepository, RewardRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddSingleton<UserStateContainer>();
 
             await builder.Build().RunAsync();
         }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using TodoReward.Model;
+using TodoReward.Data.Model;
 
-namespace TodoReward.Repository
+namespace TodoReward.Data.Repository
 {
     public class UserRepository : IUserRepository
     {
+        // "Database"
         private IList<User> _users;
 
         public UserRepository()
