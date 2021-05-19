@@ -10,17 +10,16 @@
 
 <nav>
     <NavLink href="/todos">Todos</NavLink>
-    <div>⭐ @_user.Points</div>
+    <div>⭐ @UserStateContainer.Points</div>
     <NavLink href="/rewards">Rewards</NavLink>
 </nav>
 
 @code {
-    private User _user;
 
     protected override Task OnInitializedAsync()
     {
-        _user = UserRepository.GetUser(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
-        UserStateContainer.User = _user;
+        User user = UserRepository.GetUser(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
+        UserStateContainer.Points = user.Points;
         UserStateContainer.OnChange += StateHasChanged;
         return base.OnInitializedAsync();
     }

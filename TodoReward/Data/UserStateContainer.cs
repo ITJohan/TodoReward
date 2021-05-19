@@ -5,14 +5,14 @@ namespace TodoReward.Data
 {
     public class UserStateContainer
     {
-        private User _user;
+        private int _points;
 
-        public User User
+        public int Points
         {
-            get => _user;
+            get => _points;
             set
             {
-                _user = value;
+                _points = value;
                 NotifyStateChanged();
             }
         }

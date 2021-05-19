@@ -1,4 +1,6 @@
-﻿<div class="card">
+﻿@inject UserStateContainer UserStateContainer
+
+<div class="card">
     <div class="header">
         @if (Editing)
         {
@@ -61,6 +63,8 @@
 
     private void HandleDone()
     {
+        UserStateContainer.Points += Todo.Points;
+
         if (Todo.RepeatInterval > 0)
         {
             Todo.TimeLeft = Todo.RepeatInterval;
