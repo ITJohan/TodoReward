@@ -1,4 +1,6 @@
-﻿<div class="card">
+﻿@inject UserStateContainer UserStateContainer
+
+<div class="card">
     <div class="header">
         @if (Editing)
         {
@@ -13,7 +15,7 @@
             <p>@Reward.Description</p>
             <div class="buttons">
                 <button class="primary-button" @onclick="ToggleEdit">Edit</button>
-                <button class="success-button">Done</button>
+                <button class="success-button" @onclick="HandleDone">Done</button>
             </div>
         }
     </div>
@@ -44,5 +46,10 @@
         {
             Editing = true;
         }
+    }
+
+    private void HandleDone()
+    {
+        UserStateContainer.Points += Reward.Points;
     }
 }

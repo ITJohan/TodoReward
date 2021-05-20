@@ -1,5 +1,4 @@
 ﻿using System;
-using TodoReward.Data.Model;
 
 namespace TodoReward.Data
 {
