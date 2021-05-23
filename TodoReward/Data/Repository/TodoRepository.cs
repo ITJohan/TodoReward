@@ -85,7 +85,6 @@ namespace TodoReward.Data.Repository
             if (todoToUpdate != null)
             {
                 todoToUpdate.Description = todo.Description;
-                todoToUpdate.TimeLeft = todo.TimeLeft;
                 todoToUpdate.RepeatInterval = todo.RepeatInterval;
                 todoToUpdate.Points = todo.Points;
             }

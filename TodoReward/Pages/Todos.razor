@@ -40,7 +40,7 @@
 
     private void OrderTodos()
     {
-        _todos = _todos.OrderBy(t => t.TimeLeft).ToList();
+        _todos = _todos.OrderBy(t => t.StartTime).ToList();
         this.StateHasChanged();
     }
 }

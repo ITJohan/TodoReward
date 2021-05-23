@@ -28,32 +28,32 @@ namespace TodoReward.Data.Repository
                             Id = new Guid(),
                             Description = "Ring Siv",
                             Points = 10,
-                            TimeLeft = 16,
-                            RepeatInterval = 30
+                            RepeatInterval = 30,
+                            StartTime = DateTimeOffset.Now - TimeSpan.FromDays(14)
                         },
                         new Todo
                         {
                             Id = new Guid(),
                             Description = "Ring Solveig",
                             Points = 100,
-                            TimeLeft = 4,
-                            RepeatInterval = 30
+                            RepeatInterval = 30,
+                            StartTime = DateTimeOffset.Now - TimeSpan.FromDays(26)
                         },
                         new Todo
                         {
                             Id = new Guid(),
                             Description = "Træna",
                             Points = 10,
-                            TimeLeft = 1,
-                            RepeatInterval = 1
+                            RepeatInterval = 2,
+                            StartTime = DateTimeOffset.Now - TimeSpan.FromDays(1)
                         },
                         new Todo
                         {
                             Id = new Guid(),
                             Description = "Yoga",
                             Points = 10,
-                            TimeLeft = 1,
-                            RepeatInterval = 1
+                            RepeatInterval = 1,
+                            StartTime = DateTimeOffset.Now - TimeSpan.FromDays(1)
                         }
                     },
                     Rewards = new List<Reward>
