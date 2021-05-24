@@ -22,13 +22,13 @@
     <div class="info">
         @if (_editing)
         {
-            <div>📅 <input class="info-input" @bind="_timeLeft" /> days</div>
+            <div>📅 <input class="info-input" @bind="Todo.TimeLeft" /> days</div>
             <div>🔁 <input class="info-input" @bind="Todo.RepeatInterval" /> days</div>
             <div>⭐ <input class="info-input" @bind="Todo.Points" /> points</div>
         }
         else
         {
-            <div>📅 @_timeLeft days</div>
+            <div>📅 @Todo.TimeLeft days</div>
             <div>🔁 @Todo.RepeatInterval days</div>
             <div>⭐ @Todo.Points points</div>
         }
@@ -42,8 +42,9 @@
     public Action DeleteTodo { get; set; }
     [Parameter]
     public Action OrderTodos { get; set; }
+    [Parameter]
+    public Func<int> CalculateTimeLeft { get; set; }
 
-    private int _timeLeft { get; set; }
     private bool _editing { get; set; }
 
     private void ToggleEdit()
@@ -54,8 +55,6 @@
 
     protected override Task OnInitializedAsync()
     {
-        _timeLeft = CalculateTimeLeft();
-
         if (Todo.Description == null)
         {
             _editing = true;
@@ -66,7 +65,7 @@
 
     private void HandleDone()
     {
-        if (_timeLeft < 0)
+        if (Todo.TimeLeft < 0)
         {
             UserStateContainer.Points -= Todo.Points;
         }
@@ -78,19 +77,12 @@
         if (Todo.RepeatInterval > 0)
         {
             Todo.StartTime = DateTimeOffset.UtcNow;
-            _timeLeft = CalculateTimeLeft();
+            Todo.TimeLeft = CalculateTimeLeft();
             OrderTodos();
         }
         else
         {
             DeleteTodo();
         }
-    }
-
-    private int CalculateTimeLeft()
-    {
-        int difference = (DateTimeOffset.UtcNow - Todo.StartTime).Days;
-        int timeLeft = Todo.RepeatInterval - difference;
-        return timeLeft;
     }
 }

@@ -9,5 +9,6 @@ namespace TodoReward.Data.Model
         public DateTimeOffset StartTime { get; set; }
         public int RepeatInterval { get; set; }
         public int Points { get; set; }
+        public int TimeLeft { get; set; }
     }
 }

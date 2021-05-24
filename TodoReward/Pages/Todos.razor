@@ -5,7 +5,8 @@
 {
     <TodoCard Todo="@todo"
               DeleteTodo="() => DeleteTodo(todo.Id)"
-              OrderTodos="() => OrderTodos()" />
+              OrderTodos="() => OrderTodos()"
+              CalculateTimeLeft="() => CalculateTimeLeft(todo)" />
 }
 
 <br />
@@ -20,6 +21,11 @@
     {
         // TODO: Change this to UserId
         _todos = TodoRepository.GetTodos(new Guid("0021c27c-ab20-4e79-9af4-a6a46294c293"));
+        foreach (var todo in _todos)
+        {
+            todo.TimeLeft = CalculateTimeLeft(todo);
+        }
+
         OrderTodos();
         return base.OnInitializedAsync();
     }
@@ -40,7 +46,14 @@
 
     private void OrderTodos()
     {
-        _todos = _todos.OrderBy(t => t.StartTime).ToList();
-        this.StateHasChanged();
+        _todos = _todos.OrderBy(t => t.TimeLeft).ToList();
+        StateHasChanged();
+    }
+
+    private int CalculateTimeLeft(Todo todo)
+    {
+        int difference = (DateTimeOffset.UtcNow - todo.StartTime).Days;
+        int timeLeft = todo.RepeatInterval - difference;
+        return timeLeft;
     }
 }

@@ -25,7 +25,7 @@ namespace TodoReward.Data.Repository
                     {
                         new Todo
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "Ring Siv",
                             Points = 10,
                             RepeatInterval = 30,
@@ -33,7 +33,7 @@ namespace TodoReward.Data.Repository
                         },
                         new Todo
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "Ring Solveig",
                             Points = 100,
                             RepeatInterval = 30,
@@ -41,7 +41,7 @@ namespace TodoReward.Data.Repository
                         },
                         new Todo
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "Træna",
                             Points = 10,
                             RepeatInterval = 2,
@@ -49,7 +49,7 @@ namespace TodoReward.Data.Repository
                         },
                         new Todo
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "Yoga",
                             Points = 10,
                             RepeatInterval = 1,
@@ -60,25 +60,25 @@ namespace TodoReward.Data.Repository
                     {
                         new Reward
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "1h gaming",
                             Points = -10
                         },
                         new Reward
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "Æt nått gott",
                             Points = -100
                         },
                         new Reward
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "Fylla",
                             Points = -10
                         },
                         new Reward
                         {
-                            Id = new Guid(),
+                            Id = Guid.NewGuid(),
                             Description = "Drønare",
                             Points = -1000
                         }
