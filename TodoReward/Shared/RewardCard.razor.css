@@ -32,5 +32,19 @@
 }
 
 .info-input {
-    width: 1rem;
+    width: 3rem;
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    font-size: 1.1rem;
+    border-radius: 0.25rem;
+}
+
+.description-input {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    font-size: 1.8rem;
+    border-radius: 0.25rem;
+    width: 100%;
 }

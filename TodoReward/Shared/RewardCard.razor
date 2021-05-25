@@ -4,7 +4,7 @@
     <div class="header">
         @if (Editing)
         {
-            <input @bind="Reward.Description" />
+            <input @bind="Reward.Description" class="description-input" />
             <div class="buttons">
                 <button class="success-button" @onclick="ToggleEdit">Save</button>
                 <button class="danger-button" @onclick="DeleteRewardParent">Delete</button>

@@ -4,7 +4,7 @@
     <div class="header">
         @if (_editing)
         {
-            <input @bind="Todo.Description" />
+            <input @bind="Todo.Description" class="description-input" />
             <div class="buttons">
                 <button class="success-button" @onclick="ToggleEdit">Save</button>
                 <button class="danger-button" @onclick="DeleteTodo">Delete</button>
