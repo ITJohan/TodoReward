@@ -14,4 +14,8 @@
     <Folder Include="wwwroot\fonts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TodoReward.Shared\TodoReward.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

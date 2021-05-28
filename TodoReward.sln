@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoReward", "TodoReward\TodoReward.csproj", "{CE0E0B9B-259E-4CB9-95C3-FC1DC165385D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoReward.Backend", "TodoReward.Backend\TodoReward.Backend.csproj", "{8E59460E-5D3E-4798-97EE-E228C7BA12A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoReward.Backend", "TodoReward.Backend\TodoReward.Backend.csproj", "{8E59460E-5D3E-4798-97EE-E228C7BA12A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoReward.Shared", "TodoReward.Shared\TodoReward.Shared.csproj", "{E4B72759-A7A0-450F-A704-322E2388FE0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8E59460E-5D3E-4798-97EE-E228C7BA12A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E59460E-5D3E-4798-97EE-E228C7BA12A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E59460E-5D3E-4798-97EE-E228C7BA12A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4B72759-A7A0-450F-A704-322E2388FE0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B72759-A7A0-450F-A704-322E2388FE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B72759-A7A0-450F-A704-322E2388FE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B72759-A7A0-450F-A704-322E2388FE0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
