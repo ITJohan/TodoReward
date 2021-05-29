@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TodoReward.Data.Model;
 
-namespace TodoReward.Data.Repository
+namespace TodoReward.Backend.Repository
 {
     public class UserRepository : IUserRepository
     {

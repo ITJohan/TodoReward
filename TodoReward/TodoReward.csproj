@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TodoReward.Backend\TodoReward.Backend.csproj" />
     <ProjectReference Include="..\TodoReward.Shared\TodoReward.Shared.csproj" />
   </ItemGroup>
 

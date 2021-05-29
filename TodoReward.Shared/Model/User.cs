@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TodoReward.Data.Model
+namespace TodoReward.Shared.Model
 {
     public class User
     {

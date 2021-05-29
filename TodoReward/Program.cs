@@ -3,8 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using TodoReward.Backend.Repository;
 using TodoReward.Data;
-using TodoReward.Data.Repository;
 
 namespace TodoReward
 {

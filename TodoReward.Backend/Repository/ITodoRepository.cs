@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TodoReward.Data.Model;
+using TodoReward.Shared.Model;
 
-namespace TodoReward.Data.Repository
+namespace TodoReward.Backend.Repository
 {
     interface ITodoRepository
     {

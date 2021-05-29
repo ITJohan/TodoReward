@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TodoReward.Data.Model
+namespace TodoReward.Shared.Model
 {
     public class Todo
     {

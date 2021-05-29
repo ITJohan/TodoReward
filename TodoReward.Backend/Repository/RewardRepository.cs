@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TodoReward.Data.Model;
+using TodoReward.Shared.Model;
 
-namespace TodoReward.Data.Repository
+namespace TodoReward.Backend.Repository
 {
     public class RewardRepository : IRewardRepository
     {
